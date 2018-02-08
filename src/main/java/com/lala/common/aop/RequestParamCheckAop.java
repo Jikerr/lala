@@ -1,7 +1,7 @@
-package com.lala.owners.aop;
+package com.lala.common.aop;
 
-import com.lala.owners.annotation.RequestParamValidate;
 import com.lala.common.exception.ServletRequestParamIsNullException;
+import com.lala.owners.annotation.RequestParamValidate;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -14,7 +14,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
 /**
- * @author Beauxie
+ * @author zh
  * @date Created on 2017/1/6
  */
 @Component
@@ -26,7 +26,7 @@ public class RequestParamCheckAop {
     /**
      * 定义有一个切入点，范围为web包下的类
      */
-    @Pointcut("execution(public * com.lala.owners.web.controller..*.*(..))")
+    @Pointcut("execution(public * com.lala.*.web.controller..*.*(..))")
     public void checkParam() {
     }
 

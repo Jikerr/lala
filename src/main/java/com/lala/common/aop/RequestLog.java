@@ -1,4 +1,4 @@
-package com.lala.owners.aop;
+package com.lala.common.aop;
 
 import com.alibaba.fastjson.JSONObject;
 import org.apache.log4j.Logger;
@@ -23,7 +23,7 @@ public class RequestLog {
     public static final Logger log = Logger.getLogger(RequestLog.class);
 
     // defined aop pointcut
-    @Pointcut("execution(* com.lala.owners.web.controller.*.*(..))")
+    @Pointcut("execution(* com.lala.*.web.controller.*.*(..))")
     public void controllerLog() {
     }
 

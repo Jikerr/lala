@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
  * 全局异常处理.
  * 一般情况下，方法都有异常处理机制，但不能排除有个别异常没有处理，导致返回到前台，因此在这里做一个异常拦截，统一处理那些未被处理过的异常
  *
- * @author Beauxie
+ * @author zh
  * @date Created on 2017/1/6
  */
 @RestControllerAdvice
@@ -45,6 +45,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     public Result<String> errorHandler(HttpServletRequest request, Exception e) {
         LOGGER.error("request Exception:", e);
-        return ResponseMsgUtil.exception();
+        return ResponseMsgUtil.exception(e.getMessage());//将错误打印出去
     }
 }

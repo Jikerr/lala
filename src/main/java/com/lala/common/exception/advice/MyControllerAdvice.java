@@ -28,7 +28,7 @@ public class MyControllerAdvice {
     @ResponseBody
     @ExceptionHandler(value = Exception.class)
     public Result errorHandler(Exception ex) {
-        return ResponseMsgUtil.builderResponse(SysResponseMessage._SYS_ERROR.getCode(),SysResponseMessage._SYS_ERROR.getMessage(),null);
+        return ResponseMsgUtil.builderResponse(SysResponseMessage._SYS_ERROR.getCode(),ex.getMessage(),null);
     }
 
     /**

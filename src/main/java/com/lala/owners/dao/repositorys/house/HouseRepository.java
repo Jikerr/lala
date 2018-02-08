@@ -1,4 +1,4 @@
-package com.lala.owners.dao.repositorys;
+package com.lala.owners.dao.repositorys.house;
 
 import com.lala.common.entity.house.House;
 import org.springframework.data.jpa.repository.JpaRepository;

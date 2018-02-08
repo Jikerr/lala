@@ -1,4 +1,4 @@
-package com.lala.common.enums.status;
+package com.lala.common.enums.ex;
 
 /**
  * @Author: zh
@@ -6,18 +6,16 @@ package com.lala.common.enums.status;
  * @Date Created in 17:02 2018/1/29
  * @Modified By :
  */
-public enum  Operation {
+public enum ParamsCheckedResult {
 
-    _SUCCESS(10001,"operation is successed"),//操作是正常的
-    _ERROR(10002,"operation is error"),//操作是错误的
-    _QUERY_SUCCESS(10003,"query is successed"),//查询操作正常
-    _QUERY_FAIL(10003,"query is error"),//查询操作是失败的
+    _PARAM_ISNULL(110001,"参数为空"),
+    _PARAM_ISFORMAT_ERROR(10002,"参数格式是错误的"),
     ;
 
     private Integer code;
     private String message;
 
-    Operation(Integer code, String message) {
+    ParamsCheckedResult(Integer code, String message) {
         this.code = code;
         this.message = message;
     }

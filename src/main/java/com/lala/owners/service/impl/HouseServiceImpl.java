@@ -1,7 +1,7 @@
 package com.lala.owners.service.impl;
 
 import com.lala.common.entity.house.House;
-import com.lala.owners.dao.repositorys.HouseRepository;
+import com.lala.owners.dao.repositorys.house.HouseRepository;
 import com.lala.owners.service.IHouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

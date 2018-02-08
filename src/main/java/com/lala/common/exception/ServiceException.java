@@ -13,6 +13,11 @@ public class ServiceException extends RuntimeException {
         this.msg = msg;
     }
 
+    public ServiceException(Enum<?> enumS) {
+        //enumS.
+    }
+
+
     private Integer code;
     private String msg;
 
