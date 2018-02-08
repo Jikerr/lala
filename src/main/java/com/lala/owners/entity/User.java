@@ -10,7 +10,7 @@ import javax.persistence.*;
  * @Modified By :
  */
 @Entity
-@Table(name = "w_c_user")
+@Table(name = "wc_user")
 public class User {
 
     @Id
