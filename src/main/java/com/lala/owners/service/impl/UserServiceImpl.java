@@ -1,5 +1,6 @@
 package com.lala.owners.service.impl;
 
+import com.lala.common.exception.ServiceException;
 import com.lala.owners.dao.repositorys.UserCrudRepository;
 import com.lala.owners.dao.repositorys.UserPageRepository;
 import com.lala.owners.dao.repositorys.UserRepository;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import javax.sql.rowset.serial.SerialException;
 import java.util.List;
 
 /**
@@ -48,7 +50,6 @@ public class UserServiceImpl implements IUserService {
         Sort sort = new Sort(new Sort.Order(Sort.Direction.ASC,"email"));//邮箱升序
         PageRequest pageRequest = new PageRequest(pageable.getPageNumber(),pageable.getPageSize(),sort);
         userPageRepository.findByEmail("zh-dev@outlook.com",pageRequest);
-
 
         //分页还有一种Specification的玩法就不演示了 ,但是对于不想写sql 的开发人员绝对是好东西
 

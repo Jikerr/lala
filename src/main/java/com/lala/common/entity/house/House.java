@@ -43,24 +43,29 @@ public class House extends BaseEntity {
     //private Integer houseConfigure;//房屋配置
     private String decorateType;//装修情况
 
-    @OneToMany
-    @JoinColumn(name = "fixed_charges_id")
+    @JoinTable(name = "wco_house_fixed_charges",
+            joinColumns = {@JoinColumn(name = "h_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "f_id", referencedColumnName = "id")})
+    @ManyToMany
     private List<FixedCharges> fixedCharges;
 
     public List<FixedCharges> getFixedCharges() {
         return fixedCharges;
     }
+
     public void setFixedCharges(List<FixedCharges> fixedCharges) {
         this.fixedCharges = fixedCharges;
     }
 
-    @OneToMany
-    @JoinColumn(name = "house_configures_id")
+    @JoinTable(name = "wco_house_house_configures", joinColumns = {@JoinColumn(name = "h_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "hc_id", referencedColumnName = "id")})
+    @ManyToMany
     private List<HouseConfigure> houseConfigures;
 
     public List<HouseConfigure> getHouseConfigures() {
         return houseConfigures;
     }
+
     public void setHouseConfigures(List<HouseConfigure> houseConfigures) {
         this.houseConfigures = houseConfigures;
     }

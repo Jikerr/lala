@@ -27,8 +27,4 @@ public interface UserRepository extends Repository<User,Integer> ,PagingAndSorti
     public User findById(Integer id);
 
 
-
-
-
-
 }
