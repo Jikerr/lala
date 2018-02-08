@@ -1,7 +1,7 @@
 package com.lala.owners.enums.message;
 
 /**
- * @author zh
+ * @author zh   失效 , 不用
  * @date Created on 2018/1/6
  */
 public enum EnumResultCode {
