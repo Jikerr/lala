@@ -3,6 +3,7 @@ package com.lala.common.config;
 import com.lala.common.Interceptors.AuthInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -37,7 +38,17 @@ public class WebAppConfigurer extends WebMvcConfigurerAdapter {
         //资源处理 相当于spring mvc 的资源映射
         //      registry.addResourceHandler("/new/**").addResourceLocations("classpath:/new/");
         //      registry.addResourceHandler("/**").addResourceLocations("/");
-        super.addResourceHandlers(registry);
+
+        registry.addResourceHandler("/static/**")
+                .addResourceLocations("classpath:/");
+
+        //super.addResourceHandlers(registry);
     }
+
+   /* @Override
+    public void configurePathMatch(PathMatchConfigurer configurer) {
+        super.configurePathMatch(configurer);
+        configurer.setUseSuffixPatternMatch(false);
+    }*/
 
 }

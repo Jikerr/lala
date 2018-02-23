@@ -61,7 +61,7 @@ public class Lease extends BaseEntity {
     public void setHouse(House house) {
         this.house = house;
     }
-/****************************关联表 GET AND SET ---->END<------******************************/
+    /****************************关联表 GET AND SET ---->END<------******************************/
 
     /****************************固定字段GET AND SET ---->START<------******************************/
     public Integer getId() {
