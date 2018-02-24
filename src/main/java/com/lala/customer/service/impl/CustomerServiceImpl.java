@@ -10,6 +10,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -17,11 +19,11 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 @Service
 public class CustomerServiceImpl implements ICustomerService{
-
 
     @Autowired
     private ICustomerRepository customerRepository;
@@ -32,8 +34,20 @@ public class CustomerServiceImpl implements ICustomerService{
     }
 
     @Override
-    public Page<Customer> findAll(Integer page, Integer size, Customer customer) {
+    public Page<Customer> findAll(Pageable pageable, Customer customer) {
+        Page<Customer> result = customerRepository.findAll(new Specification<Customer>(){
+            @Override
+            public Predicate toPredicate(Root<Customer> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+                List<Predicate> list = new ArrayList<Predicate>();
+                if (!StringUtils.isEmpty(customer.getRealName())) {
+                    list.add(criteriaBuilder.like(root.get("realName").as(String.class), "%" + customer.getRealName() + "%"));
+                }
 
-        return null;
+                Predicate[] p = new Predicate[list.size()];
+                return criteriaBuilder.and(list.toArray(p));
+            }
+        },pageable);
+        return result;
     }
+
 }
