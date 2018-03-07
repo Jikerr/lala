@@ -1,4 +1,4 @@
-package com.lala.common.web.resolver.helper;
+package com.lala.common.bean.list.helper;
 
 import java.io.Serializable;
 import java.util.ArrayList;

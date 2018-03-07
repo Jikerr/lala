@@ -1,11 +1,10 @@
 package com.lala.common.web.resolver;
 
 import com.lala.common.annotation.IsSearchCondition;
-import com.lala.common.web.resolver.helper.Column;
-import com.lala.common.web.resolver.helper.Order;
-import com.lala.common.web.resolver.helper.SearchCondition;
+import com.lala.common.bean.list.helper.Column;
+import com.lala.common.bean.list.helper.Order;
+import com.lala.common.bean.list.helper.SearchCondition;
 import org.springframework.core.MethodParameter;
-import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
@@ -111,11 +110,13 @@ public class SeacherConditionArgumentResolver implements HandlerMethodArgumentRe
             else if(name.equalsIgnoreCase("start")){
                 if(!StringUtils.isEmpty(webRequest.getParameter("start"))) condition.setStart(Integer.parseInt(webRequest.getParameter("start")));
             }
-
-            /*
-             * 设置SearchCondition 的start属性;
-             */
-            else if(name.equalsIgnoreCase("search")){
+            else if(name.startsWith("search[value]")){
+                condition.getSearch().setValue(webRequest.getParameter(name));
+            }
+            else if(name.startsWith("search[regex]")){
+                condition.getSearch().setRegex(Boolean.valueOf(webRequest.getParameter(name)));
+            }
+            /*else if(name.startsWith("search")){
                 String secendName = name.substring(getCharPosition(name, "\\[", 2)+1, getCharPosition(name, "\\]", 2));
                 switch (secendName) {
                     case "regex":
@@ -125,7 +126,7 @@ public class SeacherConditionArgumentResolver implements HandlerMethodArgumentRe
                         condition.getSearch().setValue(webRequest.getParameter(name));
                         break;
                 }
-            }
+            }*/
         }
         return condition;
     }

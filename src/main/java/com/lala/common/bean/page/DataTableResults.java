@@ -14,6 +14,7 @@ public class DataTableResults {
     private long recordsTotal;
     private Integer recordsFiltered;
     private List<?> data;
+    private String error;
 
     public Integer getDraw() {
         return draw;
@@ -45,5 +46,13 @@ public class DataTableResults {
 
     public void setData(List<?> data) {
         this.data = data;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
     }
 }

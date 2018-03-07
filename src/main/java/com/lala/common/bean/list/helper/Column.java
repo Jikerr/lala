@@ -1,4 +1,4 @@
-package com.lala.common.web.resolver.helper;
+package com.lala.common.bean.list.helper;
 
 import java.io.Serializable;
 
@@ -55,4 +55,6 @@ public class Column implements Serializable {
     public void setSearch(Search search) {
         this.search = search;
     }
+
+
 }
