@@ -26,17 +26,23 @@
             // -----------------------------------------------------------------
             $('#demo-dt-basic').dataTable( {
                 "serverSide": true,
-                "ajax": "xhr.php",
-
-
+                "ajax": "/manage/showList",
                 "responsive": true,
                 "language": {
                     "paginate": {
                         "previous": '<i class="demo-psi-arrow-left"></i>',
                         "next": '<i class="demo-psi-arrow-right"></i>'
                     }
-                }
-            } );
+                },
+               columns: [
+                   { data: 'realName' },
+                   { data: 'nickName' },
+                   { data: 'idCardNum' },
+                   { data: 'telephoneNum' },
+                   { data: 'wechatNum' },
+                   { data: 'createDate' }
+               ]
+            });
         });
 
     </script>
@@ -54,12 +60,12 @@
         <table id="demo-dt-basic" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
             <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th class="min-tablet">Office</th>
-                <th class="min-tablet">Extn.</th>
-                <th class="min-desktop">Start date</th>
-                <th class="min-desktop">Salary</th>
+                <th>姓名</th>
+                <th>昵称</th>
+                <th class="min-tablet">身份证号</th>
+                <th class="min-tablet">手机号码</th>
+                <th class="min-desktop">微信号</th>
+                <th class="min-desktop">创建时间</th>
             </tr>
             </thead>
             <tbody>
